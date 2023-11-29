@@ -1,0 +1,20 @@
+package demo;
+public class ThreadTest implements Runnable {
+   private int number = 10;
+   public void methodOne() throws Exception {
+      synchronized(this) {
+         number += 50;
+         System.out.println("Number in methodOne(): " + number);
+      }
+   }
+   public void methodTwo() throws Exception {
+      synchronized(this) {
+         Thread.sleep(2000); // calling sleep() method 
+         this.wait(1000); // calling wait() method
+         number *= 75;
+         System.out.println("Number in methodTwo(): " + number);
+}
+   
+}
+
+}

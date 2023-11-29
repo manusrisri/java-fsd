@@ -1,0 +1,79 @@
+throws:
+package demo;
+
+//Java program to illustrate error in case
+//of unhandled exception
+
+class tst {
+
+ public static void main(String[] args)
+
+ {
+
+     Thread.sleep(1000);
+
+     System.out.println("Hello world");
+
+ }
+}
+
+
+throw:
+package demo;
+
+//Java program that demonstrates
+//the use of throw
+
+class Test {
+
+ public static void main(String[] args)
+
+ {
+
+     System.out.println(1 / 0);
+
+ }
+}
+
+finally:
+
+package demo;
+Class ExceptionTest
+{
+  public static void main(String[] args)
+  {
+    int a[] = new int[3];
+    System.out.println("out of try");
+    try
+    {
+      System.out.println("Access invalid element"+ a[8]);
+      /* the above statement will throw ArrayIndexOutOfBoundException */
+    }
+    finally
+    {
+      System.out.println("finally is always executed.");
+    }
+  }
+}
+
+custom exceptions:
+
+class CustomException extends Exception {
+   String message;
+   CustomException(String str) {
+      message = str;
+   }
+   public String toString() {
+      return ("Custom Exception Occurred : " + message);
+   }
+}
+public class MainException {
+   public static void main(String args[]) {
+      try {
+         throw new CustomException("This is a custom message");
+      } catch(CustomException e) {
+         System.out.println(e);
+      }
+   }
+}
+
