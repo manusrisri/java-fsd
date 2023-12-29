@@ -1,0 +1,100 @@
+Applying the SSL to Spring Boot Application
+
+Java
+
+#SSL Key Info
+
+security.require-ssl=true
+
+server.ssl.key-store-password=India@123
+
+server.ssl.key-store=src/main/resources/ebininfosoft-ssl-key.p12
+
+server.ssl.key-store-type=PKCS12
+
+
+POM.XML
+Below is the POM.xml that I used to specify the Spring Boot dependency
+
+
+
+<dependencies>
+
+   <dependency>
+
+      <groupId>org.springframework.boot</groupId>
+
+      <artifactId>spring-boot-starter-web</artifactId>
+
+   </dependency>
+
+   <dependency>
+
+      <groupId>org.springframework.boot</groupId>
+
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+
+   </dependency>
+
+   <dependency>
+
+      <groupId>com.h2database</groupId>
+
+      <artifactId>h2</artifactId>
+
+      <scope>runtime</scope>
+
+   </dependency>
+
+   <dependency>
+
+      <groupId>org.springframework.boot</groupId>
+
+      <artifactId>spring-boot-starter-test</artifactId>
+
+      <scope>test</scope>
+
+      <exclusions>
+
+         <exclusion>
+
+            <groupId>org.junit.vintage</groupId>
+
+            <artifactId>junit-vintage-engine</artifactId>
+
+         </exclusion>
+
+      </exclusions>
+
+   </dependency>
+
+</dependencies>
+
+
+Controller
+The simple HomeController used to demonstrate the HTTPS Get request for your reference
+
+Java
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+
+@RequestMapping("/home")
+
+public class HomeController {
+
+
+ @RequestMapping(value = "/", method = RequestMethod.GET)
+
+ public String hello() {
+
+  return "welcome to spring boot application";
+
+ }
+
+}
